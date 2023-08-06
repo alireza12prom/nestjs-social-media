@@ -12,10 +12,10 @@ export class Users {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ type: 'varchar', nullable: true })
   first_name: string;
 
-  @Column()
+  @Column({ type: 'varchar', nullable: true })
   last_name: string;
 
   @Column()

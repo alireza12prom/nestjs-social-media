@@ -1,15 +1,9 @@
 import { Global, Module } from '@nestjs/common';
-import { connectionSource } from './connection';
+import { DatabaseProvider } from './db.provider';
 
 @Global()
 @Module({
-  providers: [
-    {
-      provide: 'DATA_SOURCE',
-      useFactory: async () => {
-        return await connectionSource.initialize();
-      },
-    },
-  ],
+  providers: [...DatabaseProvider],
+  exports: [...DatabaseProvider],
 })
 export class DbModule {}

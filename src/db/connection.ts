@@ -9,7 +9,7 @@ export const Config: DataSourceOptions = {
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
   migrationsTableName: 'migration',
-  entities: [path.join(__dirname, '/entities/*.entity.ts')],
+  entities: [path.join(__dirname, '/entities/*.entity.{ts,js}')],
   migrations: [path.join(__dirname, '/migrations/*.ts')],
   synchronize: false,
   logging: true,
