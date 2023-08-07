@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1234
+
+    ports:
+      - 543:5432
+
+    volumes:
+      - social-media-db:/var/lib/postgresql/data
+
+volumes:
+  social-media-db:
