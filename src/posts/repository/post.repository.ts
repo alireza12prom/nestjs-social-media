@@ -2,6 +2,7 @@ import { Injectable, Inject } from '@nestjs/common';
 import { Posts } from 'src/db/entities';
 import { Entity } from '../../common/constant';
 import { Repository } from 'typeorm';
+import { BasePostRepository } from '../../common/repository';
 
 interface CratePost {
   body: string;
@@ -26,8 +27,10 @@ interface OnePost {
 interface DeleteOne extends OnePost {}
 
 @Injectable()
-export class PostRepository {
-  constructor(@Inject(Entity.Posts) private post: Repository<Posts>) {}
+export class PostRepository extends BasePostRepository {
+  constructor(@Inject(Entity.Posts) protected post: Repository<Posts>) {
+    super(post);
+  }
 
   async create(input: CratePost) {
     const post = this.post.create({
@@ -71,9 +74,5 @@ export class PostRepository {
       id: input.postId,
       publisherId: input.publisherId,
     });
-  }
-
-  async existsById(postId: string) {
-    return await this.post.exist({ where: { id: postId } });
   }
 }

@@ -4,6 +4,3 @@ export * from './get-post.dto';
 export * from './delete-post.dto';
 export * from './like-post.dto';
 export * from './unlike-post.dto';
-export * from './create-comment.dto';
-export * from './delete-comment.dto';
-export * from './get-comment.dto';

@@ -1,5 +1,4 @@
 import { File } from '../common/constant';
-import { PaginationDto } from '../common/dto';
 import { PostsService } from './posts.service';
 import { GetMediaDto } from './dto/get-meida.dto';
 import { CurrentClient } from '../common/decorator';
@@ -7,9 +6,7 @@ import { AuthorizationGuard } from '../common/gaurd';
 import { FileInterceptor } from '@nestjs/platform-express';
 
 import {
-  CreateCommentDto,
   CreatePostDto,
-  DeleteCommentDto,
   DeletePostDto,
   GetPostDto,
   GetPostsDto,
@@ -29,7 +26,6 @@ import {
   UseGuards,
   Query,
   StreamableFile,
-  ParseUUIDPipe,
 } from '@nestjs/common';
 
 @UseGuards(AuthorizationGuard)
@@ -80,23 +76,5 @@ export class PostsController {
   @Delete('likes/:postId')
   unlike(@CurrentClient() client, @Param() param: UnlikePostsDto) {
     return this.postsService.unlike(client.id, param);
-  }
-
-  @Get('comments/:postId')
-  getComments(
-    @Param('postId', ParseUUIDPipe) postId: string,
-    @Query() query: PaginationDto,
-  ) {
-    return this.postsService.getComments({ postId, ...query });
-  }
-
-  @Post('comments')
-  createComment(@CurrentClient() client, @Body() body: CreateCommentDto) {
-    return this.postsService.createComment(client.id, body);
-  }
-
-  @Delete('comments')
-  deleteComment(@CurrentClient() client, @Body() body: DeleteCommentDto) {
-    return this.postsService.deleteComment(client.id, body);
   }
 }

@@ -3,11 +3,7 @@ import mimeType from 'mime-types';
 import { File } from '../common/constant';
 import { GetMediaDto } from './dto/get-meida.dto';
 import { FilesystemService } from '../common/service';
-import {
-  CommentRepository,
-  LikeRepository,
-  PostRepository,
-} from './repository';
+import { LikeRepository, PostRepository } from './repository';
 
 import {
   DeletePostDto,
@@ -16,9 +12,6 @@ import {
   LikePostsDto,
   UnlikePostsDto,
   CreatePostDto,
-  CreateCommentDto,
-  DeleteCommentDto,
-  GetCommentDto,
 } from './dto';
 
 import {
@@ -33,7 +26,6 @@ export class PostsService {
     private fileSystemService: FilesystemService,
     private postRepository: PostRepository,
     private likeRepository: LikeRepository,
-    private commentRepository: CommentRepository,
   ) {}
 
   async create(
@@ -132,7 +124,7 @@ export class PostsService {
       throw new BadRequestException('you have already liked this post');
     }
 
-    const isPostExists = await this.postRepository.existsById(input.postId);
+    const isPostExists = await this.postRepository.exists(input.postId);
     if (!isPostExists) {
       throw new NotFoundException("post didn't find");
     }
@@ -148,36 +140,6 @@ export class PostsService {
 
     if (!result) {
       throw new BadRequestException('you have not liked this post yet');
-    }
-  }
-
-  async getComments(input: GetCommentDto) {
-    return await this.commentRepository.getAll(input);
-  }
-
-  async createComment(userId: string, input: CreateCommentDto) {
-    const isPostExists = await this.postRepository.existsById(input.postId);
-
-    if (!isPostExists) {
-      throw new NotFoundException("psot didn't find");
-    }
-
-    return await this.commentRepository.create({
-      userId,
-      postId: input.postId,
-      body: input.body,
-    });
-  }
-
-  async deleteComment(userId: string, input: DeleteCommentDto) {
-    const result = await this.commentRepository.deleteOne({
-      userId,
-      postId: input.postId,
-      commentId: input.commentId,
-    });
-
-    if (!result) {
-      throw new NotFoundException("comment didn't find");
     }
   }
 }
