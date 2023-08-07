@@ -1,7 +1,6 @@
 import path from 'path';
 import mimeType from 'mime-types';
 import { File } from '../common/constant';
-import { GetMediaDto } from './dto/get-meida.dto';
 import { FilesystemService } from '../common/service';
 import { LikeRepository, PostRepository } from './repository';
 
@@ -92,26 +91,6 @@ export class PostsService {
       publisherId: userId,
       postId: input.id,
     });
-  }
-
-  async getMedia(input: GetMediaDto) {
-    const post = await this.postRepository.findById(input.id);
-
-    if (!post) {
-      throw new NotFoundException('no photo or video found');
-    }
-
-    let mediaPath: string;
-    if (post.type == 'photo') {
-      mediaPath = path.join(File.PHOTO_PATH, post.attached_media);
-    } else {
-      mediaPath = path.join(File.VIDEO_PATH, post.attached_media);
-    }
-
-    const buffer = await this.fileSystemService.openReadStream(mediaPath);
-    const mime = post.type == 'photo' ? 'image/png' : 'video/mp4';
-    const size = await this.fileSystemService.getSize(mediaPath);
-    return { buffer, mime, size };
   }
 
   async like(userId: string, input: LikePostsDto) {

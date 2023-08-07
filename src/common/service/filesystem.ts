@@ -22,19 +22,15 @@ export class FilesystemService {
     }
   }
 
-  async openReadStream(path: string) {
-    try {
-      return fs.createReadStream(path);
-    } catch (error) {
-      return null;
-    }
+  openReadStream(path: string, opt?: { start?: number; end?: number }) {
+    return fs.createReadStream(path, opt);
   }
 
-  async getSize(path: string) {
-    try {
-      return (await fsPromise.stat(path)).size;
-    } catch (error) {
-      return undefined;
-    }
+  getSize(path: string) {
+    return fs.statSync(path).size;
+  }
+
+  exists(path: string) {
+    return fs.existsSync(path);
   }
 }

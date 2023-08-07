@@ -9,4 +9,8 @@ export class BasePostRepository {
   async exists(postId: string) {
     return await this.post.exist({ where: { id: postId } });
   }
+
+  async findById(postId: string) {
+    return await this.post.findOneBy({ id: postId });
+  }
 }

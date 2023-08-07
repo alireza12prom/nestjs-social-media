@@ -1,6 +1,5 @@
 import { File } from '../common/constant';
 import { PostsService } from './posts.service';
-import { GetMediaDto } from './dto/get-meida.dto';
 import { CurrentClient } from '../common/decorator';
 import { AuthorizationGuard } from '../common/gaurd';
 import { FileInterceptor } from '@nestjs/platform-express';
@@ -25,7 +24,6 @@ import {
   UploadedFile,
   UseGuards,
   Query,
-  StreamableFile,
 } from '@nestjs/common';
 
 @UseGuards(AuthorizationGuard)
@@ -57,15 +55,9 @@ export class PostsController {
     return this.postsService.getOnePost(client.id, param);
   }
 
-  // @Delete(':id')
+  @Delete(':id')
   remove(@CurrentClient() client, @Param() param: DeletePostDto) {
     return this.postsService.deletePost(client.id, param);
-  }
-
-  @Get('media/:id')
-  async getMedia(@Param() param: GetMediaDto): Promise<StreamableFile> {
-    const { buffer, mime, size } = await this.postsService.getMedia(param);
-    return new StreamableFile(buffer, { type: mime, length: size });
   }
 
   @Post('likes/:postId')

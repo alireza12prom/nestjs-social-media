@@ -4,6 +4,7 @@ import { AuthModule } from './auth/auth.module';
 import { JwtModule } from '@nestjs/jwt';
 import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
+import { StreamModule } from './stream/stream.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { CommentsModule } from './comments/comments.module';
     JwtModule.register({ global: true }),
     PostsModule,
     CommentsModule,
+    StreamModule,
   ],
 })
 export class AppModule {}
