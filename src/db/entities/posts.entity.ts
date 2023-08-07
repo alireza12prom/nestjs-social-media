@@ -4,8 +4,9 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   ManyToOne,
+  OneToMany,
 } from 'typeorm';
-import { Users } from './users.entity';
+import { Users, Likes, Comments } from '.';
 
 // ----- post types
 enum PostTypes {
@@ -18,8 +19,8 @@ export class Posts {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => Users, (user) => user.posts, { cascade: true })
-  publisher: Users;
+  @Column('uuid')
+  publisherId: string;
 
   @Column({ type: 'text' })
   body: string;
@@ -35,4 +36,15 @@ export class Posts {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  // --- relation
+
+  @ManyToOne(() => Users, (user) => user.posts, { cascade: true })
+  publisher: Users;
+
+  @OneToMany(() => Likes, (like) => like.post)
+  likes: Likes[];
+
+  @OneToMany(() => Comments, (comment) => comment.post)
+  comments: Comments[];
 }

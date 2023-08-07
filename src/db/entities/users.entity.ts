@@ -21,9 +21,11 @@ export class Users {
   @Column()
   email: string;
 
-  @OneToMany(() => Posts, (post) => post.publisher)
-  posts: Posts[];
-
   @CreateDateColumn()
   createdAt: Date;
+
+  // --- relation
+
+  @OneToMany(() => Posts, (post) => post.publisher)
+  posts: Posts[];
 }
