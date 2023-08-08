@@ -5,6 +5,7 @@ import { JwtModule } from '@nestjs/jwt';
 import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
 import { StreamModule } from './stream/stream.module';
+import { ProfileModule } from './profile/profile.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { StreamModule } from './stream/stream.module';
     PostsModule,
     CommentsModule,
     StreamModule,
+    ProfileModule,
   ],
 })
 export class AppModule {}

@@ -3,3 +3,4 @@ export const Users = 'users';
 export const Posts = 'posts';
 export const Likes = 'likes';
 export const Comments = 'comments';
+export const Connections = 'connections';

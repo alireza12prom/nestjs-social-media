@@ -5,7 +5,7 @@ import {
   OneToMany,
   CreateDateColumn,
 } from 'typeorm';
-import { Posts } from './posts.entity';
+import { Posts, Connections } from '.';
 
 @Entity({ name: 'users' })
 export class Users {
@@ -28,4 +28,10 @@ export class Users {
 
   @OneToMany(() => Posts, (post) => post.publisher)
   posts: Posts[];
+
+  @OneToMany(() => Connections, (connection) => connection.user)
+  followings: Connections[];
+
+  @OneToMany(() => Connections, (connection) => connection.target)
+  followers: Connections[];
 }
