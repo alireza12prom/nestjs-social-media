@@ -1,0 +1,750 @@
+{
+	"info": {
+		"_postman_id": "28eef237-b2ca-4b35-aae3-e2434b6130a4",
+		"name": "Social Media",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24222018"
+	},
+	"item": [
+		{
+			"name": "Comments",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/comments/:id?page=1&limit=5",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments",
+								":id"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f5bc8eed-a85b-400c-8898-0afdaf88b22a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postId\":\"f5bc8eed-a85b-400c-8898-0afdaf88b22a\",\r\n    \"body\":\"hello Hmmimmimmi: ali\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/comments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"postId\": \"f5bc8eed-a85b-400c-8898-0afdaf88b22a\",\r\n    \"commentId\": \"f5bc8eed-a85b-400c-8898-0afdaf88b22a\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/comments",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Stream",
+			"item": [
+				{
+					"name": "Photo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/streams/photo/:fileId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"streams",
+								"photo",
+								":fileId"
+							],
+							"variable": [
+								{
+									"key": "fileId",
+									"value": "7f5ad9d372dd35d9e0e10a088ccf944f"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Video",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/streams/video/:fileId",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"streams",
+								"video",
+								":fileId"
+							],
+							"variable": [
+								{
+									"key": "fileId",
+									"value": "9967425de142a2a3f04eb5bd715fe64f"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Delete",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "c74d294d-c9fa-4725-b4bd-51a9c3a4d93d"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Client Posts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts?limit=5&page=1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "One Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f5bc8eed-a85b-400c-8898-0afdaf88b22a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "body",
+									"value": "this is a photo",
+									"type": "text"
+								},
+								{
+									"key": "attached_file",
+									"type": "file",
+									"src": "/C:/Users/ASUS/Desktop/wallhaven-9d5k5x.jpg"
+								},
+								{
+									"key": "hashtag",
+									"value": "#photo,#hashtag",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "photo",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url}}/posts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like A Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/likes/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								"likes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f5bc8eed-a85b-400c-8898-0afdaf88b22a"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unlike A Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/posts/likes/:id",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"posts",
+								"likes",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "f5bc8eed-a85b-400c-8898-0afdaf88b22a"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profiles",
+			"item": [
+				{
+					"name": "Get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile"
+							],
+							"query": [
+								{
+									"key": "userId",
+									"value": "d3b71c98-790e-4653-9892-d39d350d675b",
+									"description": "Optional",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\":\"alireza\",\r\n    \"last_name\":\"mohammadi\",\r\n    \"email\":\"alireza@alireza.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/profile",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Follow",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"targetId\":\"d3b71c98-790e-4653-9892-d39d350d675b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/profile/connection",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"connection"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Unfollow",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"targetId\":\"d3b71c98-790e-4653-9892-d39d350d675b\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/profile/connection",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"connection"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Followers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profile/followers",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"followers"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5",
+									"description": "Optional",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Optional",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "d3b71c98-790e-4653-9892-d39d350d675b",
+									"description": "Optional",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Followings",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/profile/followings",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"profile",
+								"followings"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "Optional",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"description": "Optional",
+									"disabled": true
+								},
+								{
+									"key": "userId",
+									"value": "d3b71c98-790e-4653-9892-d39d350d675b",
+									"description": "Optional",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{access_token}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Explorer",
+			"item": [
+				{
+					"name": "Find Post",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/explorer/posts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"explorer",
+								"posts"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "type",
+									"value": "photo",
+									"description": "photo or video",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "photo",
+									"disabled": true
+								},
+								{
+									"key": "hashtags",
+									"value": "#test",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Find People",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/explorer/users",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"explorer",
+								"users"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "5",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "q",
+									"value": "mohammadi",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
