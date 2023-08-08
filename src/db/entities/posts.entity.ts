@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   ManyToOne,
   OneToMany,
+  Index,
 } from 'typeorm';
 import { Users, Likes, Comments } from '.';
 
@@ -36,6 +37,15 @@ export class Posts {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @Index('GIN_fulltext_post_body', { synchronize: false })
+  @Column({
+    type: 'tsvector',
+    generatedType: 'STORED',
+    select: false,
+    asExpression: "to_tsvector('simple', body)",
+  })
+  body_vector: string;
 
   // --- relation
 

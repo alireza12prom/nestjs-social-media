@@ -6,6 +6,7 @@ import { PostsModule } from './posts/posts.module';
 import { CommentsModule } from './comments/comments.module';
 import { StreamModule } from './stream/stream.module';
 import { ProfileModule } from './profile/profile.module';
+import { ExplorerModule } from './explorer/explorer.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { ProfileModule } from './profile/profile.module';
     CommentsModule,
     StreamModule,
     ProfileModule,
+    ExplorerModule,
   ],
 })
 export class AppModule {}

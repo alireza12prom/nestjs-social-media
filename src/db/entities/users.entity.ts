@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   CreateDateColumn,
+  Index,
 } from 'typeorm';
 import { Posts, Connections } from '.';
 
@@ -23,6 +24,16 @@ export class Users {
 
   @CreateDateColumn()
   createdAt: Date;
+
+  @Index('GIN_fulltext_user_fullname', { synchronize: false })
+  @Column({
+    type: 'tsvector',
+    generatedType: 'STORED',
+    select: false,
+    asExpression:
+      "to_tsvector('simple', COALESCE(first_name, '') || ' ' || COALESCE(last_name, ''))",
+  })
+  fullname_vector: string;
 
   // --- relation
 
