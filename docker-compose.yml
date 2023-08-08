@@ -7,11 +7,36 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
 
-    ports:
-      - 543:5432
-
     volumes:
-      - social-media-db:/var/lib/postgresql/data
+      - social-media:/var/lib/postgresql/data
+
+    networks:
+      - social-media
+
+  app:
+    build: .
+
+    depends_on:
+      - db
+
+    environment:
+      - DB_PASS=1234
+      - DB_USER=postgres
+      - DB_NAME=postgres
+      - DB_HOST=db
+
+    ports:
+      - 3000:3000
+
+    networks:
+      - social-media
+
+    command: >
+      sh -c "npm run docker:env -- npm run schema:sync
+      && npm run docker:env -- npm run start"
 
 volumes:
-  social-media-db:
+  social-media:
+
+networks:
+  social-media:

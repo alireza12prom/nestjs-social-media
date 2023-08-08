@@ -5,7 +5,7 @@ export const Config: DataSourceOptions = {
   type: 'postgres',
   username: process.env.DB_USER,
   password: process.env.DB_PASS,
-  port: 543,
+  port: 5432,
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,
   migrationsTableName: 'migration',
